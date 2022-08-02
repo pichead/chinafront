@@ -2,7 +2,7 @@ import Layout from "../components/layout/Layout";
 import React, { useState, useEffect } from "react";
 
 function About() {
-  console.log("aaaaaaaaaa");
+  console.log("yyyy");
 
   var myHeaders = new Headers();
   myHeaders.append(
