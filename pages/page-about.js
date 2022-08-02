@@ -3,18 +3,27 @@ import React, { useState, useEffect } from "react";
 
 function About() {
   console.log("aaaaaaaaaa");
+
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "Token 64d0edbc8c468b49213291016c010f9c306d1b0b"
+  );
+
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
+
   function Apitest() {
-    fetch("https://api.openchinaapi.com/v1/taobao/products/520813250866", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "6ec3e9c0733d0ba25cdf0d8ea7d16d1dc7c27b2b",
-      },
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
+    fetch(
+      "https://api.openchinaapi.com/v1/taobao/products/520813250866",
+      requestOptions
+    )
+      .then((response) => response.text())
+      .then((result) => console.log(result))
+      .catch((error) => console.log("error", error));
   }
 
   useEffect(() => {
