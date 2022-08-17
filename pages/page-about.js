@@ -2,34 +2,6 @@ import Layout from "../components/layout/Layout";
 import React, { useState, useEffect } from "react";
 
 function About() {
-  console.log("yyyy");
-
-  var myHeaders = new Headers();
-  myHeaders.append(
-    "Authorization",
-    "Token 64d0edbc8c468b49213291016c010f9c306d1b0b"
-  );
-
-  var requestOptions = {
-    method: "GET",
-    headers: myHeaders,
-    redirect: "follow",
-  };
-
-  function Apitest() {
-    fetch(
-      "https://api.openchinaapi.com/v1/taobao/products/520813250866",
-      requestOptions
-    )
-      .then((response) => response.text())
-      .then((result) => console.log(result))
-      .catch((error) => console.log("error", error));
-  }
-
-  useEffect(() => {
-    Apitest();
-  });
-
   return (
     <>
       <Layout parent="Home" sub="Pages" subChild="About">

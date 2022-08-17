@@ -1,66 +1,66 @@
 // import fetch from 'isomorphic-unfetch'
-import filterProductList from '../../util/filterProduct'
-import searchItemsByText from '../../util/searchItemsByText'
-import * as Types from '../constants/actionTypes'
+import filterProductList from "../../util/filterProduct";
+import searchItemsByText from "../../util/searchItemsByText";
+import * as Types from "../constants/actionTypes";
 
 // Fetch Product fetchProduct
-export const fetchProduct = (searchTerm, url, filters) => async dispatch => {
-    try {
+export const fetchProduct = (searchTerm, url, filters) => async (dispatch) => {
+  //////////////////////// FIX //////////////////////////////
+  if (searchTerm === undefined) {
+    searchTerm = "";
+    console.log(searchTerm);
+  }
+  //   const setSearchTerm = "" + searchTerm;
+  const test = `http://localhost:3001/products/?q="${searchTerm}"`;
 
-        const sendRequest = await fetch(url)
-        const data = await sendRequest.json()
+  try {
+    // GET API
+    const sendRequest = await fetch(test);
+    const data = await sendRequest.json();
 
-        window.products = data
+    window.products = data.data.item;
 
-        const searchedItems = searchItemsByText(searchTerm, data)
-        const filteredList = filterProductList(searchedItems, filters)
+    // const searchedItems = searchItemsByText(searchTerm, data.data.item);
+    const filteredList = filterProductList(data.data.item, filters);
+    console.log(data.data.item);
 
-        dispatch({
-            type: Types.FETCHED_PRODUCT,
-            payload: { products: filteredList }
-        })
+    dispatch({
+      type: Types.FETCHED_PRODUCT,
+      payload: { products: filteredList },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
-    } catch (error) {
-        console.log(error)
-    }
+// Fetch More Product
+export const fetchMoreProduct = (url, total) => async (dispatch) => {
+  try {
+    const sendRequest = await fetch(url);
+    const data = await sendRequest.json();
 
-}
+    // const searchedItems = searchItemsByText(searchTerm,data)
+    // const filteredList  = filterProductList(searchedItems,filters)
 
-
-// Fetch More Product 
-export const fetchMoreProduct = (url, total) => async dispatch => {
-    try {
-
-        const sendRequest = await fetch(url)
-        const data = await sendRequest.json()
-
-        // const searchedItems = searchItemsByText(searchTerm,data)
-        // const filteredList  = filterProductList(searchedItems,filters)
-
-        dispatch({
-            type: Types.FETCHED_MORE_PRODUCT,
-            payload: { products: data, total }
-        })
-
-    } catch (error) {
-        console.log(error)
-    }
-
-}
-
+    dispatch({
+      type: Types.FETCHED_MORE_PRODUCT,
+      payload: { products: data, total },
+    });
+  } catch (error) {
+    console.log(error);
+  }
+};
 
 // Fetch Product By Catagory
 
 export const fetchByCatagory = async (url, filters) => {
-    try {
+  try {
+    const sendRequest = await fetch(url);
+    const data = await sendRequest.json();
+    const filteredList = filterProductList(data, filters);
 
-        const sendRequest = await fetch(url)
-        const data = await sendRequest.json()
-        const filteredList = filterProductList(data, filters)
-
-        return filteredList
-
-    } catch (error) {
-        console.log(error)
-    }
-}
+    return filteredList;
+  } catch (error) {
+    console.log(error);
+  }
+};
