@@ -28,6 +28,7 @@ TABLE CONTENT
  Custom amine
 ***/
 @import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400;1,700&family=Quicksand:wght@400;500;600;700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@100;200;300;400&display=swap');
 /*import vendors*/
 @import url(vendors/bootstrap.min.css);
 @import url(vendors/uicons-regular-straight.css);
@@ -706,7 +707,7 @@ h6,
 .display-1,
 .display-2,
 .heading-sm-1 {
-  font-family: "Quicksand", sans-serif;
+  font-family: 'Kanit', sans-serif;
   color: #253D4E;
   font-weight: 700;
   line-height: 1.2;

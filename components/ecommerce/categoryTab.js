@@ -11,6 +11,7 @@ function CategoryTab() {
   const [cat1, setCat1] = useState([]);
   const [cat2, setCat2] = useState([]);
   const [cat3, setCat3] = useState([]);
+  const page = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   // FIX
   var myHeaders = new Headers();
@@ -25,15 +26,16 @@ function CategoryTab() {
     redirect: "follow",
   };
 
-  const catPAll = async () => {
+  const catPAll = async (id) => {
     const request = await fetch(
-      "http://localhost:3001/products/?q=''&page=1",
+      `http://localhost:3001/products/?q=''&page=${id}`,
       requestOptions
     );
     const allProducts = await request.json();
     setCatAll(allProducts.data.item);
     setActive("1");
   };
+
   const catP1 = async () => {
     const request = await fetch(
       "http://localhost:3001/products/?q=''&page=2",
@@ -64,12 +66,15 @@ function CategoryTab() {
   };
 
   useEffect(() => {
-    catPAll();
+    catPAll(1);
   }, []);
 
   return (
     <>
-      <div className="section-title style-2 wow animate__animated animate__fadeIn">
+      <div
+        id="producttest"
+        className="section-title style-2 wow animate__animated animate__fadeIn"
+      >
         <h3>All Products</h3>
         <ul className="nav nav-tabs links" id="myTab" role="tablist">
           <li className="nav-item" role="presentation">
@@ -115,6 +120,31 @@ function CategoryTab() {
         >
           <div className="product-grid-4 row">
             <Cat1Tab products={catAll} />
+          </div>
+          <div className="pagination-area mt-20 mb-20">
+            <nav aria-label="Page navigation example">
+              <ul className="pagination justify-content-start">
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    <i className="fi-rs-arrow-small-left"></i>
+                  </a>
+                </li>
+                {page.map((item, i) => (
+                  <div key={i}>
+                    <li
+                      className="page-item"
+                      onClick={(e) => {
+                        catPAll(item);
+                      }}
+                    >
+                      <a className="page-link" href="#producttest">
+                        {item}
+                      </a>
+                    </li>
+                  </div>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
 

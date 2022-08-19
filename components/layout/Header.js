@@ -26,13 +26,26 @@ const Header = ({
   const handleToggle = () => setToggled(!isToggled);
 
   const onClickAccount = () => {
-    console.log("test link");
-    const user = localStorage.getItem("user");
-    if (user) {
-      window.location = "page-account";
-    } else {
-      window.location = "page-login";
-    }
+    const token = localStorage.getItem("token");
+    fetch("http://localhost:3001/authen", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer " + token,
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "ok") {
+          window.location = "page-account";
+        } else {
+          window.location = "page-login";
+          localStorage.removeItem("token");
+        }
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   return (

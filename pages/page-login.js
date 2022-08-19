@@ -22,6 +22,7 @@ function Login() {
           alert("Login Success");
           localStorage.setItem("user", data.phone);
           localStorage.setItem("id", data.id);
+          localStorage.setItem("token", data.token);
           window.location = "/page-account";
         } else {
           alert("User/Password Incorrect");

@@ -25,6 +25,7 @@ const SingleProduct = ({
   };
 
   const handleWishlist = (product) => {
+    console.log(product);
     addToWishlist(product);
     toast("Added to Wishlist !");
   };
@@ -41,14 +42,14 @@ const SingleProduct = ({
             </Link>
           </div>
           <div className="product-action-1">
-            {/* <a
+            <a
               aria-label="Quick view"
               className="action-btn hover-up"
               data-bs-toggle="modal"
               onClick={(e) => openQuickView(product)}
             >
               <i className="fi-rs-eye"></i>
-            </a> */}
+            </a>
             <a
               aria-label="Add To Wishlist"
               className="action-btn hover-up"

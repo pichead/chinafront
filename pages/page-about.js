@@ -18,7 +18,7 @@ function About() {
                 </div>
                 <div className="col-lg-6">
                   <div className="pl-25">
-                    <h2 className="mb-30">Welcome to Nest</h2>
+                    <h2 className="mb-30">ยินดีต้อนรับสู่ ECOM-CARGO</h2>
                     <p className="mb-25">
                       Lorem ipsum dolor sit amet, consectetur adipiscing elit,
                       sed do eiusmod tempor incididunt ut labore et dolore magna
@@ -41,78 +41,79 @@ function About() {
                 </div>
               </section>
               <section className="text-center mb-50">
-                <h2 className="title style-3 mb-40">What We Provide?</h2>
+                <h2 className="title style-3 mb-40">
+                  สิทธิพิเศษที่คุณจะได้จากเรา
+                </h2>
                 <div className="row">
                   <div className="col-lg-4 col-md-6 mb-24">
                     <div className="featured-card">
                       <img src="/assets/imgs/theme/icons/icon-1.svg" alt="" />
-                      <h4>Best Prices & Offers</h4>
+                      <h4>ราคาและข้อเสนอที่ดีที่สุด</h4>
                       <p>
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form
+                        หากคุณต้องการสั่งซื้อสินค้าจีนเราสามารถช่วยคุณได้
+                        เรามาพร้อมกับข้อเสนอสุดคุ้มที่จะช่วยให้คุณประหยัดค่าใช้จ่ายมากยิ่งขึ้นเพียงสั่งสินค้ากับเรา
                       </p>
-                      <a href="#">Read more</a>
+                      {/* <a href="#">Read more</a> */}
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 mb-24">
                     <div className="featured-card">
                       <img src="/assets/imgs/theme/icons/icon-2.svg" alt="" />
-                      <h4>Wide Assortment</h4>
+                      <h4>มีสินค้าหลากหลายประเภท</h4>
                       <p>
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form
+                        เรามีสินค้ามากมาย หลายประเภทที่คัดสรรมาสำหรับคุณ
+                        ให้คุณสามารถเลือกช็อปได้อย่างจุใจกันเลยทีเดียว
+                        <br />
                       </p>
-                      <a href="#">Read more</a>
+                      {/* <a href="#">Read more</a> */}
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 mb-24">
                     <div className="featured-card">
                       <img src="/assets/imgs/theme/icons/icon-3.svg" alt="" />
-                      <h4>Free Delivery</h4>
+                      <h4>ค่าขนส่งที่แสนจะถูก</h4>
                       <p>
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form
+                        ขอให้คุณไว้ใจในการสั่งสินค้าจากเรา
+                        เราจะช่วยประหยัดเงินในกระเป๋าของคุณเลย
+                        <br />
+                        <br />
                       </p>
-                      <a href="#">Read more</a>
+                      {/* <a href="#">Read more</a> */}
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 mb-24">
                     <div className="featured-card">
                       <img src="/assets/imgs/theme/icons/icon-4.svg" alt="" />
-                      <h4>Easy Returns</h4>
+                      <h4>ขั้นตอนการสั่งซื้อที่ง่ายดาย</h4>
                       <p>
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form
+                        การสั่งซื้อสินค้าก็แสนง่ายดายเพียงแค่คุณเลือกซื้อสินค้าที่คุณต้องการจากเราเดี๋ยวทีเหลือเราจะบริการคุณเอง
                       </p>
-                      <a href="#">Read more</a>
+                      {/* <a href="#">Read more</a> */}
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 mb-24">
                     <div className="featured-card">
                       <img src="/assets/imgs/theme/icons/icon-5.svg" alt="" />
-                      <h4>100% Satisfaction</h4>
+                      <h4>สินค้ามีคุณภาพ</h4>
                       <p>
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form
+                        สินค้าที่เรานำเข้าเป็นสินค้าที่มีคุณภาพทุกชิ้น
+                        ไว้ใจหายห่วงได้เลย
+                        <br />
+                        <br />
                       </p>
-                      <a href="#">Read more</a>
+                      {/* <a href="#">Read more</a> */}
                     </div>
                   </div>
                   <div className="col-lg-4 col-md-6 mb-24">
                     <div className="featured-card">
                       <img src="/assets/imgs/theme/icons/icon-6.svg" alt="" />
-                      <h4>Great Daily Deal</h4>
+                      <h4>จัดส่งคุณได้อย่างรวดเร็ว</h4>
                       <p>
-                        There are many variations of passages of Lorem Ipsum
-                        available, but the majority have suffered alteration in
-                        some form
+                        บริการจัดส่งก็แสนจะรวดเร็วใช้เวลาเพียง 3 - 10
+                        วันเท่านั้น นอนรอรับสินค้าแบบสบายจได้เลย
+                        <br />
+                        <br />
                       </p>
-                      <a href="#">Read more</a>
                     </div>
                   </div>
                 </div>
