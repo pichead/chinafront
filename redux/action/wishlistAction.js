@@ -13,6 +13,7 @@ export const closeWishlistModal = (e) => (dispatch) => {
 };
 
 export const addToWishlist = (product) => (dispatch) => {
+  console.log(product);
   dispatch({
     type: Types.ADD_TO_WISHLIST,
     payload: { product },

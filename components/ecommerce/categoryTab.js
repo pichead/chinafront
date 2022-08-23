@@ -28,7 +28,7 @@ function CategoryTab() {
 
   const catPAll = async (id) => {
     const request = await fetch(
-      `http://localhost:3001/products/?q=''&page=${id}`,
+      `http://localhost:3001/products/?q=""&page=${id}`,
       requestOptions
     );
     const allProducts = await request.json();
@@ -36,9 +36,9 @@ function CategoryTab() {
     setActive("1");
   };
 
-  const catP1 = async () => {
+  const catP1 = async (id) => {
     const request = await fetch(
-      "http://localhost:3001/products/?q=''&page=2",
+      ` https://api.openchinaapi.com/v1/taobao/products/?&q=hot&is_promotion=1&page=${id}`,
       requestOptions
     );
     const allProducts = await request.json();
@@ -46,24 +46,23 @@ function CategoryTab() {
     setActive("2");
   };
 
-  const catP2 = async () => {
+  const catP2 = async (id) => {
     const request = await fetch(
-      "http://localhost:3001/products/?q=''&page=3",
+      `http://localhost:3001/products/?q=new&page=${id}`,
       requestOptions
     );
     const allProducts = await request.json();
-    // const cat2Item = allProducts.filter((item) => item.category == "shoe");
     setCat2(allProducts.data.item);
     setActive("3");
   };
 
-  const catP3 = async () => {
-    const request = await fetch(`${server}/static/product.json`);
-    const allProducts = await request.json();
-    const cat3Item = allProducts.filter((item) => item.category == "jacket");
-    setCat3(cat3Item);
-    setActive("4");
-  };
+  // const catP3 = async () => {
+  //   const request = await fetch(`${server}/static/product.json`);
+  //   const allProducts = await request.json();
+  //   const cat3Item = allProducts.filter((item) => item.category == "jacket");
+  //   setCat3(cat3Item);
+  //   setActive("4");
+  // };
 
   useEffect(() => {
     catPAll(1);
@@ -90,7 +89,7 @@ function CategoryTab() {
               className={active === "2" ? "nav-link active" : "nav-link"}
               onClick={catP1}
             >
-              Featured
+              Hot
             </button>
           </li>
           <li className="nav-item" role="presentation">
@@ -98,17 +97,17 @@ function CategoryTab() {
               className={active === "3" ? "nav-link active" : "nav-link"}
               onClick={catP2}
             >
-              Popular
+              New
             </button>
           </li>
-          <li className="nav-item" role="presentation">
+          {/* <li className="nav-item" role="presentation">
             <button
               className={active === "4" ? "nav-link active" : "nav-link"}
               onClick={catP3}
             >
-              New added
+              New AAa
             </button>
-          </li>
+          </li> */}
         </ul>
       </div>
 
@@ -156,6 +155,31 @@ function CategoryTab() {
           <div className="product-grid-4 row">
             <Cat1Tab products={cat1} />
           </div>
+          <div className="pagination-area mt-20 mb-20">
+            <nav aria-label="Page navigation example">
+              <ul className="pagination justify-content-start">
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    <i className="fi-rs-arrow-small-left"></i>
+                  </a>
+                </li>
+                {page.map((item, i) => (
+                  <div key={i}>
+                    <li
+                      className="page-item"
+                      onClick={(e) => {
+                        catP1(item);
+                      }}
+                    >
+                      <a className="page-link" href="#producttest">
+                        {item}
+                      </a>
+                    </li>
+                  </div>
+                ))}
+              </ul>
+            </nav>
+          </div>
         </div>
 
         <div
@@ -165,6 +189,31 @@ function CategoryTab() {
         >
           <div className="product-grid-4 row">
             <Cat3Tab products={cat2} />
+          </div>
+          <div className="pagination-area mt-20 mb-20">
+            <nav aria-label="Page navigation example">
+              <ul className="pagination justify-content-start">
+                <li className="page-item">
+                  <a className="page-link" href="#">
+                    <i className="fi-rs-arrow-small-left"></i>
+                  </a>
+                </li>
+                {page.map((item, i) => (
+                  <div key={i}>
+                    <li
+                      className="page-item"
+                      onClick={(e) => {
+                        catP2(item);
+                      }}
+                    >
+                      <a className="page-link" href="#producttest">
+                        {item}
+                      </a>
+                    </li>
+                  </div>
+                ))}
+              </ul>
+            </nav>
           </div>
         </div>
         {/* <div

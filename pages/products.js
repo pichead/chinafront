@@ -130,7 +130,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
               </div>
               <div className="col-lg-1-5 primary-sidebar sticky-sidebar">
                 <div className="sidebar-widget widget-category-2 mb-30">
-                  <h5 className="section-title style-1 mb-30">Category</h5>
+                  <h5 className="section-title style-1 mb-30">ประเภท</h5>
                   <CategoryProduct />
                 </div>
 

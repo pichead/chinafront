@@ -27,16 +27,17 @@ const Search = () => {
       <form>
         <select className="select-active">
           <option>ประเภท</option>
-          <option>Women's</option>
-          <option>Men's</option>
-          <option>Cellphones</option>
-          <option>Computer</option>
-          <option>Electronics</option>
-          <option> Accessories</option>
-          <option>Home & Garden</option>
-          <option>Luggage</option>
-          <option>Shoes</option>
-          <option>Mother & Kids</option>
+          <option>เสื้อ</option>
+          <option>กางเกง</option>
+          <option>กระเป๋า</option>
+          <option>สุขภาพ</option>
+          <option>กีฬา</option>
+          <option>ของตบแต่ง</option>
+          <option>เครื่องใช้ไฟฟ้า</option>
+          <option>รองเท้า</option>
+          <option>กำลังฮิต</option>
+          <option>คอมพิวเตอร์</option>
+          <option>หูฟัง</option>
         </select>
         <input
           value={searchTerm}

@@ -34,24 +34,25 @@ const Cart = ({
         <section className="mt-50 mb-50">
           <div className="container">
             <div className="row">
-              <div className="col-lg-8 mb-40 m-auto">
-                <h1 className="heading-2 mb-10">Your Cart</h1>
+              <div className="col-lg-10 mb-40 m-auto">
+                <h1 className="heading-2 mb-10">ตะกร้าสินค้า</h1>
                 <div className="d-flex justify-content-between">
                   <h6 className="text-body">
-                    There are <span className="text-brand">3</span> products in
-                    your cart
+                    มีสินค้า &ensp;
+                    <span className="text-brand">{cartItems.length}</span>{" "}
+                    &ensp;สินค้าอยู่ในตะกร้าสินค้าของคุณ
                   </h6>
-                  <h6 className="text-body">
+                  {/* <h6 className="text-body">
                     <a href="#" className="text-muted">
                       <i className="fi-rs-trash mr-5"></i>
                       Clear Cart
                     </a>
-                  </h6>
+                  </h6> */}
                 </div>
               </div>
             </div>
             <div className="row">
-              <div className="col-lg-8 m-auto">
+              <div className="col-lg-10 m-auto">
                 <div className="table-responsive shopping-summery">
                   {cartItems.length <= 0 && "No Products"}
                   <table
@@ -65,13 +66,13 @@ const Cart = ({
                           className="custome-checkbox start pl-30"
                           colSpan="2"
                         >
-                          Product
+                          สินค้า
                         </th>
-                        <th scope="col">Unit Price</th>
-                        <th scope="col">Quantity</th>
-                        <th scope="col">Subtotal</th>
+                        <th scope="col">ราคาต่อชิ้น</th>
+                        <th scope="col">จำนวน</th>
+                        <th scope="col">ราคาทั้งหมด</th>
                         <th scope="col" className="end">
-                          Remove
+                          ลบสินค้า
                         </th>
                       </tr>
                     </thead>
@@ -113,14 +114,18 @@ const Cart = ({
                             <div className="detail-extralink mr-15">
                               <div className="detail-qty border radius ">
                                 <a
-                                  onClick={(e) => decreaseQuantity(item.id)}
+                                  onClick={(e) =>
+                                    decreaseQuantity(item.num_iid)
+                                  }
                                   className="qty-down"
                                 >
                                   <i className="fi-rs-angle-small-down"></i>
                                 </a>
                                 <span className="qty-val">{item.quantity}</span>
                                 <a
-                                  onClick={(e) => increaseQuantity(item.id)}
+                                  onClick={(e) =>
+                                    increaseQuantity(item.num_iid)
+                                  }
                                   className="qty-up"
                                 >
                                   <i className="fi-rs-angle-small-up"></i>
@@ -135,7 +140,7 @@ const Cart = ({
                           </td>
                           <td className="action" data-title="Remove">
                             <a
-                              onClick={(e) => deleteFromCart(item.id)}
+                              onClick={(e) => deleteFromCart(item.num_iid)}
                               className="text-muted"
                             >
                               <i className="fi-rs-trash"></i>

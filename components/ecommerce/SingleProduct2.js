@@ -25,7 +25,7 @@ const SingleProduct2 = ({
   };
 
   const handleWishlist = (product) => {
-    console.log(product);
+    console.log(product.id);
     addToWishlist(product);
     toast("Added to Wishlist !");
   };

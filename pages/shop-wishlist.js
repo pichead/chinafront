@@ -26,6 +26,18 @@ const Wishlist = ({
         <section className="mt-50 mb-50">
           <div className="container">
             <div className="row">
+              <div className="col-lg-10 mb-40 m-auto">
+                <h1 className="heading-2 mb-10">สินค้าที่คุณสนใจ</h1>
+                <div className="d-flex justify-content-between">
+                  <h6 className="text-body">
+                    มีสินค้า &ensp;
+                    <span className="text-brand">
+                      {wishlist.items.length}
+                    </span>{" "}
+                    &ensp;สินค้าที่คุณสนใจ
+                  </h6>
+                </div>
+              </div>
               <div className="col-xl-10 col-lg-12 m-auto">
                 {wishlist.items.length > 0 ? (
                   <div className="table-responsive shopping-summery">
@@ -36,13 +48,13 @@ const Wishlist = ({
                             className="custome-checkbox start pl-30"
                             colSpan="2"
                           >
-                            Product
+                            สินค้า
                           </th>
-                          <th scope="col">Price</th>
-                          <th scope="col">Stock Status</th>
-                          <th scope="col">Action</th>
+                          <th scope="col">ราคา</th>
+                          <th scope="col">สถานะสินค้า</th>
+                          <th scope="col">ตะกร้าสินค้า</th>
                           <th scope="col" className="end">
-                            Remove
+                            ลบสินค้า
                           </th>
                         </tr>
                       </thead>
@@ -103,13 +115,15 @@ const Wishlist = ({
                                   className="btn btn-sm"
                                   onClick={(e) => handleCart(product)}
                                 >
-                                  Add to cart
+                                  เพิ่มในตะกร้าสินค้า
                                 </button>
                               )}
                             </td>
                             <td className="action" data-title="Remove">
                               <a
-                                onClick={(e) => deleteFromWishlist(product.id)}
+                                onClick={(e) =>
+                                  deleteFromWishlist(product.num_iid)
+                                }
                               >
                                 <i className="fi-rs-trash"></i>
                               </a>

@@ -14,7 +14,8 @@ const CategoryProduct = ({ updateProductCategory }) => {
     router.push({
       pathname: "/products",
       query: {
-        search: category, //
+        search: category,
+        cat: category,
       },
     });
   };
@@ -22,82 +23,82 @@ const CategoryProduct = ({ updateProductCategory }) => {
     <>
       <ul>
         <li onClick={(e) => selectCategory(e, "")}>
-          <a>All</a>
+          <a>ทั้งหมด</a>
         </li>
         <li onClick={(e) => selectCategory(e, "shirt")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-1.svg" alt="" />
-            Shirt
+            เสื้อ
           </a>
           {/* <span className="count">30</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "trousers")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-2.svg" alt="" />
-            Trousers
+            กางเกง
           </a>
           {/* <span className="count">35</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "bag")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Bag{" "}
+            กระเป๋า{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "health")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Health{" "}
+            สุขภาพ{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "sport")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Sport{" "}
+            กีฬา{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "decoration")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Decoration{" "}
+            ของตบแต่ง{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "electrical Appliance")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Electrical Appliance{" "}
+            เครื่องใช้ไฟฟ้า{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "shoe")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Shoe{" "}
+            รองเท้า{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "hot")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Hot{" "}
+            กำลังฮิต{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "computer")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Computer{" "}
+            คอมพิวเตอร์{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>
         <li onClick={(e) => selectCategory(e, "headphone")}>
           <a>
             <img src="/assets/imgs/theme/icons/category-3.svg" alt="" />
-            Headphone{" "}
+            หูฟัง{" "}
           </a>
           {/* <span className="count">42</span> */}
         </li>

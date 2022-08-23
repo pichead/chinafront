@@ -690,7 +690,7 @@ h4 {
 /*TYPOGRAPHY*/
 body {
   color: #7E7E7E;
-  font-family: "Lato", sans-serif;
+  font-family: 'Kanit', sans-serif;
   font-size: 14px;
   line-height: 24px;
   font-style: normal;
@@ -711,6 +711,10 @@ h6,
   color: #253D4E;
   font-weight: 700;
   line-height: 1.2;
+}
+
+.font-kait {
+  font-family: 'Kanit', sans-serif;
 }
 
 h1 {

@@ -23,7 +23,6 @@ const ProductDetails = ({
   quickView,
 }) => {
   const [quantity, setQuantity] = useState(1);
-
   const handleCart = (product) => {
     addToCart(product);
     toast("Product added to Cart !");
@@ -66,8 +65,8 @@ const ProductDetails = ({
                   <div className="col-md-6 col-sm-12 col-xs-12">
                     <div className="detail-info  pr-30 pl-30">
                       <span className="stock-status out-stock"> Sale </span>
-                      <h2 className="title-detail">{product.title}</h2>
-                      <div className="product-detail-rating">
+                      <h2 className="title-detail mb-4">{product.title}</h2>
+                      {/* <div className="product-detail-rating">
                         <div className="product-rate-cover text-end">
                           <div className="product-rate d-inline-block">
                             <div
@@ -80,19 +79,22 @@ const ProductDetails = ({
                             (32 reviews)
                           </span>
                         </div>
-                      </div>
+                      </div> */}
                       <div className="clearfix product-price-cover">
                         <div className="product-price primary-color float-left">
                           <span className="current-price  text-brand">
-                            ${product.orginal_price}
+                            ${product.price}
                           </span>
+
                           <span>
                             {/* <span className="save-price font-md color3 ml-15">{product.discount.percentage}% Off</span> */}
-                            <span className="old-price font-md ml-15">
-                              {product.oldPrice
-                                ? `$ ${product.oldPrice}`
-                                : null}
-                            </span>
+                            {product.orginal_price > product.price ? (
+                              <div>
+                                <span className="old-price">
+                                  {"$" + product.orginal_price}
+                                </span>
+                              </div>
+                            ) : null}
                           </span>
                         </div>
                       </div>
@@ -197,12 +199,12 @@ const ProductDetails = ({
                           ผู้ขายสินค้า :
                           <a href="#">&ensp;{product.seller_nick}</a>
                         </li>
-                        <li>
+                        {/* <li>
                           Availability:
                           <span className="in-stock text-success ml-5">
                             {product.stock} Items In Stock
                           </span>
-                        </li>
+                        </li> */}
                       </ul>
                     </div>
                   </div>

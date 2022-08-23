@@ -16,30 +16,28 @@ const SingleProduct = ({
 }) => {
   const handleCart = (product) => {
     addToCart(product);
-    toast("Product added to Cart !");
+    toast("เพิ่มในตะกร้าสินค้าแล้ว !");
   };
 
-  const handleCompare = (product) => {
-    addToCompare(product);
-    toast("Added to Compare list !");
-  };
+  // const handleCompare = (product) => {
+  //   addToCompare(product);
+  //   toast("Added to Compare list !");
+  // };
 
   const handleWishlist = (product) => {
-    console.log(product);
     addToWishlist(product);
-    toast("Added to Wishlist !");
+    toast("เพิ่มในรายการที่ชอบแล้ว !");
   };
+
   return (
     <>
       <div className="product-cart-wrap mb-30">
         <div className="product-img-action-wrap">
           <div className="product-img product-img-zoom">
-            <Link href="/products/[title]" as={`/products/${product.title}`}>
-              <a>
-                <img className="default-img" src={product.pic_url} alt="" />
-                {/* <img className="hover-img" src={product.images[1].img} alt="" /> */}
-              </a>
-            </Link>
+            <a>
+              <img className="default-img" src={product.pic_url} alt="" />
+              {/* <img className="hover-img" src={product.images[1].img} alt="" /> */}
+            </a>
           </div>
           <div className="product-action-1">
             <a
@@ -57,13 +55,13 @@ const SingleProduct = ({
             >
               <i className="fi-rs-heart"></i>
             </a>
-            <a
+            {/* <a
               aria-label="Compare"
               className="action-btn hover-up"
               onClick={(e) => handleCompare(product)}
             >
               <i className="fi-rs-shuffle"></i>
-            </a>
+            </a> */}
           </div>
 
           {/* <div className="product-badges product-badges-position product-badges-mrg">
@@ -109,12 +107,16 @@ const SingleProduct = ({
 
           <div className="product-card-bottom">
             <div className="product-price">
-              <span>${product.promotion_price} </span>
-              {product.promotion_price < product.price ? (
-                <span className="old-price">
-                  {product.price && `$ ${product.price}`}
-                </span>
-              ) : null}
+              {product.orginal_price > product.price ? (
+                <div>
+                  <span>{"$" + product.price} </span>
+                  <span className="old-price">
+                    {"$" + product.orginal_price}
+                  </span>
+                </div>
+              ) : (
+                <span>{"$" + product.price} </span>
+              )}
             </div>
             <div className="add-cart">
               <a className="add" onClick={(e) => handleCart(product)}>

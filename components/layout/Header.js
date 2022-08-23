@@ -241,7 +241,7 @@ const Header = ({
                         </a>
                       </Link>
                       <Link href="/shop-wishlist">
-                        <span className="lable">สินค้าที่อยากได้</span>
+                        <span className="lable">สินค้าที่คุณสนใจ</span>
                       </Link>
                     </div>
                     <div className="header-action-icon-2">
@@ -463,10 +463,10 @@ const Header = ({
                         <Link href="/">
                           <a className="active">
                             หน้าหลัก
-                            <i className="fi-rs-angle-down"></i>
+                            {/* <i className="fi-rs-angle-down"></i> */}
                           </a>
                         </Link>
-                        <ul className="sub-menu">
+                        {/* <ul className="sub-menu">
                           <li>
                             <Link href="/">
                               <a>Home 1</a>
@@ -487,7 +487,7 @@ const Header = ({
                               <a>Home 4</a>
                             </Link>
                           </li>
-                        </ul>
+                        </ul> */}
                       </li>
                       <li>
                         <Link href="/page-about">
@@ -557,27 +557,27 @@ const Header = ({
 
                       <li>
                         <a href="#">
-                          ค่าขนส่ง <i className="fi-rs-angle-down"></i>
+                          วิธีการสั่งซื้อ <i className="fi-rs-angle-down"></i>
                         </a>
                         <ul className="sub-menu">
                           <li>
+                            <Link href="/vendor-guide">
+                              <a>วิธีการสั่งซื้อ</a>
+                            </Link>
+                          </li>
+                          <li>
                             <Link href="/vendors">
-                              <a>Vendors Grid</a>
+                              <a>ค่าขนส่ง</a>
                             </Link>
                           </li>
                           <li>
                             <Link href="/vendors-list">
-                              <a>Vendors List</a>
+                              <a>วิธีการขนส่ง</a>
                             </Link>
                           </li>
                           <li>
                             <Link href="/vendor-dashboard">
                               <a>Vendor Dashboard</a>
-                            </Link>
-                          </li>
-                          <li>
-                            <Link href="/vendor-guide">
-                              <a>Vendor Guide</a>
                             </Link>
                           </li>
                         </ul>
@@ -807,7 +807,7 @@ const Header = ({
                       </li>
                       <li>
                         <Link href="/page-contact">
-                          <a>ติดต่อเรา</a>
+                          <a>แจ้งปัญหา</a>
                         </Link>
                       </li>
                     </ul>

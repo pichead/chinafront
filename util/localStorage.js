@@ -1,8 +1,6 @@
 class storage {
   static set(key, cartItems) {
-    // console.log("helllooooo");
-    // console.log(key);
-    // console.log(cartItems);
+    console.log("helllooooo");
     localStorage.setItem(key, JSON.stringify(cartItems));
   }
 
