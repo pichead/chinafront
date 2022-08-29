@@ -15,8 +15,7 @@ import Link from "next/link";
 export default function Home() {
   return (
     <>
-      <IntroPopup />
-
+      {/* <IntroPopup /> */}
       <Layout noBreadcrumb="d-none">
         <section className="home-slider position-relative mb-30">
           <div className="container">
@@ -30,29 +29,7 @@ export default function Home() {
           <div className="container wow animate__fadeIn animate__animated">
             <div className="section-title">
               <div className="title">
-                <h3>Categories</h3>
-                <ul className="list-inline nav nav-tabs links">
-                  {/* <li className="list-inline-item nav-item">
-                    <Link href="/products">
-                      <a className="nav-link">Clothes</a>
-                    </Link>
-                  </li>
-                  <li className="list-inline-item nav-item">
-                    <Link href="/products">
-                      <a className="nav-link">Trousers</a>
-                    </Link>
-                  </li>
-                  <li className="list-inline-item nav-item">
-                    <Link href="/products">
-                      <a className="nav-link active">Bag</a>
-                    </Link>
-                  </li>
-                  <li className="list-inline-item nav-item">
-                    <Link href="/products">
-                      <a className="nav-link">shoe</a>
-                    </Link>
-                  </li> */}
-                </ul>
+                <h3>ประเภทสินค้า</h3>
               </div>
             </div>
             <div className="carausel-10-columns-cover position-relative">
@@ -79,13 +56,13 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="section-padding pb-5">
+        {/* <section className="section-padding pb-5">
           <div className="container">
             <FetchTabSlider />
           </div>
-        </section>
+        </section> */}
 
-        <section className="section-padding pb-5">
+        {/* <section className="section-padding pb-5">
           <div className="container">
             <div
               className="section-title wow animate__animated animate__fadeIn"
@@ -101,9 +78,9 @@ export default function Home() {
             </div>
             <FeatchDeals />
           </div>
-        </section>
+        </section> */}
 
-        <Bottom />
+        {/* <Bottom /> */}
 
         <QuickView />
       </Layout>

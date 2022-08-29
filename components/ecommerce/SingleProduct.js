@@ -97,12 +97,7 @@ const SingleProduct = ({
           </div> */}
 
           <div>
-            <span className="font-small text-muted">
-              By{" "}
-              <Link href="/vendor/1">
-                <a>NestFood</a>
-              </Link>
-            </span>
+            <span className="font-small text-muted">{product.seller_nick}</span>
           </div>
 
           <div className="product-card-bottom">

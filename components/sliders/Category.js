@@ -8,79 +8,86 @@ SwiperCore.use([Navigation, Autoplay]);
 const data = [
   {
     id: 1,
-    title: "Shirt",
+    title: "เสื้อ",
     slug: "shirt",
-    img: "cat-13.png",
-    bg: "bg-9",
-  },
-  {
-    id: 2,
-    title: "Trousers",
-    slug: "trousers",
-    img: "cat-12.png",
+    img: "icon-shirt2.svg",
     bg: "bg-10",
   },
   {
-    id: 3,
-    title: "Bag",
-    slug: "bag",
-    img: "cat-11.png",
+    id: 2,
+    title: "กางเกง",
+    slug: "trousers",
+    img: "icon-trouser2.svg",
     bg: "bg-11",
   },
   {
+    id: 3,
+    title: "กระเป๋า",
+    slug: "bag",
+    img: "icon-bag2.svg",
+    bg: "bg-10",
+  },
+  {
     id: 4,
-    title: "Health",
+    title: "สุขภาพ",
     slug: "health",
-    img: "cat-9.png",
-    bg: "bg-12",
+    img: "icon-health2.svg",
+    bg: "bg-11",
   },
   {
     id: 5,
-    title: "Sport",
+    title: "กีฬา",
     slug: "sport",
-    img: "cat-3.png",
-    bg: "bg-13",
+    img: "icon-sport2.svg",
+    bg: "bg-10",
   },
   {
     id: 6,
-    title: "Decoration",
+    title: "ของตบแต่ง",
     slug: "decoration",
-    img: "cat-1.png",
-    bg: "bg-14",
+    img: "icon-decoration2.svg",
+    bg: "bg-11",
   },
   {
     id: 7,
-    title: "Electrical Appliance",
+    title: "เครื่องใช้ไฟฟ้า",
     slug: "electrical appliance",
-    img: "cat-2.png",
-    bg: "bg-15",
+    img: "icon-elec2.svg",
+    bg: "bg-10",
   },
   {
     id: 8,
-    title: "Shoe",
+    title: "รองเท้า",
     slug: "shoe",
-    img: "cat-4.png",
-    bg: "bg-12",
+    img: "icon-shoe2.svg",
+    bg: "bg-11",
   },
   {
     id: 9,
-    title: "Hot",
-    slug: "hot",
-    img: "cat-5.png",
+    title: "หูฟัง",
+    slug: "headphone",
+    img: "icon-headphone3.svg",
     bg: "bg-10",
   },
   {
     id: 10,
-    title: "Computer",
+    title: "คอมพิวเตอร์",
     slug: "computer",
-    img: "cat-14.png",
-    bg: "bg-12",
+    img: "icon-computer2.svg",
+    bg: "bg-11",
   },
   {
     id: 11,
-    title: "Headphone",
-    slug: "headphone",
-    img: "cat-15.png",
+    title: "อาหารสัตว์",
+    slug: "animal feed",
+    img: "icon-pet2.svg",
+    bg: "bg-10",
+  },
+  {
+    id: 12,
+    title: "เกษตรกรรม",
+    slug: "agriculture",
+    img: "icon-plant2.svg",
     bg: "bg-11",
   },
 ];
@@ -94,7 +101,7 @@ const CategorySlider = () => {
     router.push({
       pathname: "/products",
       query: {
-        search: category, //
+        search: category,
       },
     });
 
@@ -136,10 +143,14 @@ const CategorySlider = () => {
             >
               <figure className=" img-hover-scale overflow-hidden">
                 <a>
-                  <img src={`assets/imgs/shop/${item.img}`} alt="" />
+                  <img
+                    src={`assets/imgs/theme/icons/${item.img}`}
+                    alt=""
+                    style={{ width: 500 }}
+                  />
                 </a>
               </figure>
-              <h6>
+              <h6 style={{ color: "white" }}>
                 <a>{item.title}</a>
               </h6>
 

@@ -8,7 +8,7 @@ const Search = () => {
   const handleSearch = () => {
     console.log("click");
     router.push({
-      pathname: "/products/",
+      pathname: "/products",
       query: {
         search: searchTerm,
       },
@@ -22,23 +22,10 @@ const Search = () => {
       handleSearch();
     }
   };
+
   return (
     <>
       <form>
-        <select className="select-active">
-          <option>ประเภท</option>
-          <option>เสื้อ</option>
-          <option>กางเกง</option>
-          <option>กระเป๋า</option>
-          <option>สุขภาพ</option>
-          <option>กีฬา</option>
-          <option>ของตบแต่ง</option>
-          <option>เครื่องใช้ไฟฟ้า</option>
-          <option>รองเท้า</option>
-          <option>กำลังฮิต</option>
-          <option>คอมพิวเตอร์</option>
-          <option>หูฟัง</option>
-        </select>
         <input
           value={searchTerm}
           onKeyDown={handleInput}

@@ -4,30 +4,52 @@ import searchItemsByText from "../../util/searchItemsByText";
 import * as Types from "../constants/actionTypes";
 
 // Fetch Product fetchProduct
-export const fetchProduct = (searchTerm, url, filters) => async (dispatch) => {
-  //////////////////////// FIX //////////////////////////////
-  if (searchTerm === undefined) {
-    searchTerm = "";
-    console.log(searchTerm);
-  }
-  //   const setSearchTerm = "" + searchTerm;
-  const test = `http://localhost:3001/products/?q="${searchTerm}"`;
+export const fetchProduct = (searchTerm, filters) => async (dispatch) => {
+  console.log(searchTerm);
+  var text = undefined;
+  var myHeaders = new Headers();
+  myHeaders.append(
+    "Authorization",
+    "Token 64d0edbc8c468b49213291016c010f9c306d1b0b"
+  );
 
+  var requestOptions = {
+    method: "GET",
+    headers: myHeaders,
+    redirect: "follow",
+  };
   try {
-    // GET API
-    const sendRequest = await fetch(test);
-    const data = await sendRequest.json();
-
-    window.products = data.data.item;
-
-    // const searchedItems = searchItemsByText(searchTerm, data.data.item);
-    const filteredList = filterProductList(data.data.item, filters);
-    console.log(data.data.item);
-
-    dispatch({
-      type: Types.FETCHED_PRODUCT,
-      payload: { products: filteredList },
-    });
+    if (searchTerm !== text) {
+      const apiurl = `https://api.openchinaapi.com/v1/taobao/products/?&q=${searchTerm}&page_size=100`;
+      const sendRequest = await fetch(apiurl, requestOptions);
+      const data = await sendRequest.json();
+      text = searchTerm;
+      console.log("log1");
+      dispatch({
+        type: Types.FETCHED_PRODUCT,
+        payload: { products: data.data.item },
+      });
+    } else if (filters.category) {
+      const apiurl = `https://api.openchinaapi.com/v1/taobao/products/?&q=${filters.category}&page_size=100`;
+      const sendRequest = await fetch(apiurl, requestOptions);
+      const data = await sendRequest.json();
+      console.log("log2");
+      // console.log(data.data.item);
+      dispatch({
+        type: Types.FETCHED_PRODUCT,
+        payload: { products: data.data.item },
+      });
+    } else {
+      console.log("DATA = ''");
+      const apiurl = `https://api.openchinaapi.com/v1/taobao/products/?&q=?&page_size=100`;
+      const sendRequest = await fetch(apiurl, requestOptions);
+      const data = await sendRequest.json();
+      console.log("log3");
+      dispatch({
+        type: Types.FETCHED_PRODUCT,
+        payload: { products: data.data.item },
+      });
+    }
   } catch (error) {
     console.log(error);
   }

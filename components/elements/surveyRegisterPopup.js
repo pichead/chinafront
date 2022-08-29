@@ -37,7 +37,7 @@ const surveyRegisterPopup = () => {
               <div
                 className="deal"
                 style={{
-                  backgroundImage: "url('assets/imgs/banner/what-2.svg')",
+                  backgroundImage: "url('assets/imgs/banner/survey.png')",
                 }}
               >
                 <div className="deal-content  detail-info">

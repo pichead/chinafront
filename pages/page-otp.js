@@ -73,7 +73,7 @@ function Otp() {
                   <div className="col-lg-6 pr-30 d-none d-lg-block">
                     <img
                       className="border-radius-15"
-                      src="assets/imgs/page/otp-2.svg"
+                      src="assets/imgs/page/otp-1.png"
                       alt=""
                     />
                   </div>

@@ -68,7 +68,7 @@ function Login() {
                   <div className="col-lg-6 pr-30 d-none d-lg-block">
                     <img
                       className="border-radius-15"
-                      src="assets/imgs/page/register-1.svg"
+                      src="assets/imgs/page/register-1.png"
                       alt=""
                     />
                   </div>

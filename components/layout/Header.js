@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import CategoryProduct2 from "../ecommerce/Filter/CategoryProduct2";
 import CategoryProduct3 from "../ecommerce/Filter/CategoryProduct3";
 import Search from "../ecommerce/Search";
+import { AiOutlineHome } from "react-icons/ai";
 
 const Header = ({
   totalCartItems,
@@ -178,7 +179,7 @@ const Header = ({
               <div className="logo logo-width-1">
                 <Link href="/">
                   <a>
-                    <img src="/assets/imgs/theme/logo.svg" alt="logo" />
+                    <img src="/assets/imgs/theme/logo2.jpg" alt="logo" />
                   </a>
                 </Link>
               </div>
@@ -356,7 +357,7 @@ const Header = ({
               <div className="logo logo-width-1 d-block d-lg-none">
                 <Link href="/">
                   <a>
-                    <img src="/assets/imgs/theme/logo.svg" alt="logo" />
+                    <img src="/assets/imgs/theme/logo2.jpg" alt="logo" />
                   </a>
                 </Link>
               </div>
@@ -367,7 +368,7 @@ const Header = ({
                     onClick={handleToggle}
                   >
                     <span className="fi-rs-apps"></span>
-                    <span className="et">Browse</span> All Categories
+                    <span className="et">ประเภทสินค้า</span>
                     <i className="fi-rs-angle-down"></i>
                   </a>
 
@@ -378,7 +379,7 @@ const Header = ({
                         : "categories-dropdown-wrap categories-dropdown-active-large font-heading"
                     }
                   >
-                    <div className="d-flex categori-dropdown-inner">
+                    <div className="d-flex">
                       <CategoryProduct2 />
                       <CategoryProduct3 />
                     </div>
@@ -441,16 +442,12 @@ const Header = ({
                         </ul>
                       </div>
                     </div>
-                    <div className="more_categories">
-                      <span className="icon"></span>{" "}
-                      <span className="heading-sm-1">Show more...</span>
-                    </div>
                   </div>
                 </div>
-                <div className="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block  font-heading">
+                <div className="main-menu main-menu-padding-1 main-menu-lh-2 d-none d-lg-block font-heading">
                   <nav>
                     <ul>
-                      <li className="hot-deals">
+                      {/* <li className="hot-deals">
                         <img
                           src="/assets/imgs/theme/icons/icon-hot.svg"
                           alt="hot deals"
@@ -458,12 +455,17 @@ const Header = ({
                         <Link href="/products">
                           <a>โปรโมชัน</a>
                         </Link>
-                      </li>
+                      </li> */}
                       <li>
                         <Link href="/">
                           <a className="active">
-                            หน้าหลัก
-                            {/* <i className="fi-rs-angle-down"></i> */}
+                            <i>
+                              <AiOutlineHome
+                                className="mb-2"
+                                style={{ fontSize: 24 }}
+                              />
+                            </i>
+                            &ensp;หน้าหลัก
                           </a>
                         </Link>
                         {/* <ul className="sub-menu">
@@ -494,7 +496,7 @@ const Header = ({
                           <a>เกี่ยวกับเรา</a>
                         </Link>
                       </li>
-                      <li>
+                      {/* <li>
                         <Link href="/shop-grid-right">
                           <a>
                             ประเภทสินค้า
@@ -553,11 +555,11 @@ const Header = ({
                             </Link>
                           </li>
                         </ul>
-                      </li>
+                      </li> */}
 
                       <li>
                         <a href="#">
-                          วิธีการสั่งซื้อ <i className="fi-rs-angle-down"></i>
+                          วิธีการใช้งาน <i className="fi-rs-angle-down"></i>
                         </a>
                         <ul className="sub-menu">
                           <li>
@@ -755,7 +757,7 @@ const Header = ({
                           </li>
                         </ul>
                       </li> */}
-                      <li>
+                      {/* <li>
                         <Link href="/#">
                           <a>
                             หน้า
@@ -804,6 +806,26 @@ const Header = ({
                             </Link>
                           </li>
                         </ul>
+                      </li> */}
+                      <li>
+                        <Link href="/page-contact">
+                          <a>Taobao</a>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/page-contact">
+                          <a>1688</a>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/page-contact">
+                          <a>JD</a>
+                        </Link>
+                      </li>
+                      <li>
+                        <Link href="/page-contact">
+                          <a>Tmall</a>
+                        </Link>
                       </li>
                       <li>
                         <Link href="/page-contact">

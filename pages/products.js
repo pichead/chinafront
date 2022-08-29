@@ -29,10 +29,14 @@ const Products = ({ products, productFilters, fetchProduct }) => {
 
   // console.log(products);
 
-  useEffect(() => {
-    fetchProduct(searchTerm, "/static/product.json", productFilters);
-    cratePagination();
-  }, [productFilters, limit, pages, products.items.length]);
+  useEffect(
+    () => {
+      fetchProduct(searchTerm, productFilters);
+      cratePagination();
+    },
+    [productFilters, limit, pages],
+    10000
+  );
 
   const cratePagination = () => {
     // set pagination
@@ -80,11 +84,11 @@ const Products = ({ products, productFilters, fetchProduct }) => {
                 <div className="shop-product-fillter">
                   <div className="totall-product">
                     <p>
-                      We found
+                      พบสินค้า
                       <strong className="text-brand">
                         {products.items.length}
                       </strong>
-                      items for you!
+                      ชิ้นสำหรับคุณ
                     </p>
                   </div>
                   <div className="sort-by-product-area">
@@ -94,9 +98,9 @@ const Products = ({ products, productFilters, fetchProduct }) => {
                         showLimit={showLimit}
                       />
                     </div>
-                    <div className="sort-by-cover">
+                    {/* <div className="sort-by-cover">
                       <SortSelect />
-                    </div>
+                    </div> */}
                   </div>
                 </div>
                 <div className="row product-grid">
@@ -134,7 +138,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
                   <CategoryProduct />
                 </div>
 
-                <div className="sidebar-widget price_range range mb-30">
+                {/* <div className="sidebar-widget price_range range mb-30">
                   <h5 className="section-title style-1 mb-30">Fill by price</h5>
 
                   <div className="price-filter">
@@ -155,9 +159,9 @@ const Products = ({ products, productFilters, fetchProduct }) => {
                     </div>
                   </div>
                   <br />
-                </div>
+                </div> */}
 
-                <div className="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
+                {/* <div className="sidebar-widget product-sidebar  mb-30 p-30 bg-grey border-radius-10">
                   <h5 className="section-title style-1 mb-30">New products</h5>
                   <div className="single-post clearfix">
                     <div className="image">
@@ -210,7 +214,7 @@ const Products = ({ products, productFilters, fetchProduct }) => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
                 <div className="banner-img wow fadeIn mb-lg-0 animated d-lg-block d-none">
                   <img src="/assets/imgs/banner/banner-11.png" alt="" />
                   <div className="banner-text">
