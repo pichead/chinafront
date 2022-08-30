@@ -11,8 +11,36 @@ import Layout from "./../components/layout/Layout";
 import CategorySlider from "./../components/sliders/Category";
 import Intro1 from "./../components/sliders/Intro1";
 import Link from "next/link";
+import { useEffect,useState } from "react";
+import { projectFirestore } from "../firebase/config";
 
 export default function Home() {
+
+  const [User,setUser] = useState([])
+
+
+  useEffect(()=>{
+    const fetchUser = async ()=>{
+      const getUser = await projectFirestore.collection('users').get()
+      getUser.forEach((userData)=>{ 
+        console.log('userId : ',userData.id)
+        console.log('userData : ',userData.data())
+      })
+    }
+
+    const getUserById = async ()=>{
+      const getUserId = await projectFirestore.collection('users').doc('R7Tsce1AQDZLJXR9gePv').get()
+      console.log('userId got 1 : ',getUserId.id)
+      console.log('userData got 1 : ',getUserId.data())
+    }
+
+
+
+    fetchUser()
+    getUserById()
+  },[])
+
+
   return (
     <>
       {/* <IntroPopup /> */}
