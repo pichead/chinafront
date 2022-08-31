@@ -2,6 +2,7 @@ import Link from "next/link";
 import Layout from "../components/layout/Layout";
 import SurveyRegisterPopup from "./../components/elements/surveyRegisterPopup";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 function Login() {
   const router = useRouter(),
@@ -56,6 +57,24 @@ function Login() {
     }
   };
 
+  const [phoneNo,setphoneNo] = useState("")
+  const [validLogin,setvalidLogin] = useState(true)
+
+  const phoneCheck = (e) =>{
+    const phoneInput = e.target.value
+    if(!(/\D/.test(phoneInput))){
+      if(phoneInput[0] != 0){
+        setphoneNo("")
+      }
+      else{
+        if(phoneInput.length < 11){
+          setphoneNo(phoneInput)
+        }
+      }
+    }
+
+  }
+
   return (
     <>
       <Layout parent="Home" sub="Pages" subChild="Login & Register">
@@ -91,13 +110,13 @@ function Login() {
                               <label>
                                 ชื่อจริง <span className="required">*</span>
                               </label>
-                              <input type="text" required="" name="firstname" />
+                              <input type="text" placeholder="ระบุชื่อจริง" required name="firstname" />
                             </div>
                             <div className="form-group col-4">
                               <label>
                                 นามสกุล <span className="required">*</span>
                               </label>
-                              <input type="text" required="" name="lastname" />
+                              <input type="text" placeholder="ระบุนามสกุล" required name="lastname" />
                             </div>
                             {/* <div className="form-group">
                               <input
@@ -115,8 +134,9 @@ function Login() {
                               <select
                                 name="sex"
                                 className="form-control select-active text-secondary"
+                                required
                               >
-                                <option value=""></option>
+                                <option value="" selected disabled>เลือกเพศ</option>
                                 <option value="ชาย">ชาย</option>
                                 <option value="หญิง">หญิง</option>
                               </select>
@@ -126,35 +146,14 @@ function Login() {
                               <label>
                                 อีเมล <span className="required">*</span>
                               </label>
-                              <input required="" type="email" name="email" />
+                              <input required type="email" placeholder="email@mymail.com" name="email" />
                             </div>
                             <div className="form-group col-6">
                               <label>
                                 เบอร์โทรศัพท์{" "}
                                 <span className="required">*</span>
                               </label>
-                              <input required="" type="text" name="phone" />
-                            </div>
-                            <div className="form-group">
-                              <label>
-                                รหัสผ่าน <span className="required">*</span>
-                              </label>
-                              <input
-                                required=""
-                                type="password"
-                                name="password"
-                              />
-                            </div>
-                            <div className="form-group">
-                              <label>
-                                ยืนยันรหัสผ่าน{" "}
-                                <span className="required">*</span>
-                              </label>
-                              <input
-                                required=""
-                                type="password"
-                                name="confirmPassword"
-                              />
+                              <input placeholder="0987654321" required type="tel" onChange={phoneCheck} value={phoneNo} name="phone" />
                             </div>
                             {/* <div className="login_footer form-group mb-50">
                             <div className="chek-form">
