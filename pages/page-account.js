@@ -393,37 +393,7 @@ function Account() {
                             </div>
                           </div>
 
-                          {/* <div className="col-lg-6">
-                            <div className="card-body">
-                              {address.map((data, key) => (
-                                <div key={key}>
-                                  <h5 className="mb-3">ที่อยู่ที่ 2</h5>
-                                  <p className="lead p-1">
-                                    {data.firstname} {data.lastname}
-                                  </p>
-                                  <p className="lead p-1">
-                                    {data.house_number}
-                                  </p>
-                                  <p className="lead p-1">
-                                    {"ตำบล" + " " + data.subdistricts}
-                                  </p>
-                                  <p className="lead p-1">
-                                    {"อำเภอ" + " " + data.districts}
-                                  </p>
-                                  <p className="lead p-1">
-                                    {"จังหวัด" + " " + data.province}
-                                  </p>
-                                  <p className="lead p-1"> {data.postcode}</p>
-                                </div>
-                              ))}
-                              <a
-                                className="btn-small p-1"
-                                onClick={togglePopup}
-                              >
-                                Edit
-                              </a>
-                            </div>
-                          </div> */}
+
                         </div>
                       </div>
                       <div
@@ -433,116 +403,7 @@ function Account() {
                             : "tab-pane fade "
                         }
                       >
-                        {/* <div className="card">
-                          <div className="card-header">
-                            <h5>Account Details</h5>
-                          </div>
-                          <div className="card-body">
-                            <p>
-                              Already have an account?{" "}
-                              <Link href="/page-login">
-                                <a>Log in instead!</a>
-                              </Link>
-                            </p>
-                            <form method="post" name="enq">
-                              <div className="row">
-                                <div className="form-group col-md-6">
-                                  <label>
-                                    First Name{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="name"
-                                    type="text"
-                                  />
-                                </div>
-                                <div className="form-group col-md-6">
-                                  <label>
-                                    Last Name{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="phone"
-                                  />
-                                </div>
-                                <div className="form-group col-md-12">
-                                  <label>
-                                    Display Name{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="dname"
-                                    type="text"
-                                  />
-                                </div>
-                                <div className="form-group col-md-12">
-                                  <label>
-                                    Email Address{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="email"
-                                    type="email"
-                                  />
-                                </div>
-                                <div className="form-group col-md-12">
-                                  <label>
-                                    Current Password{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="password"
-                                    type="password"
-                                  />
-                                </div>
-                                <div className="form-group col-md-12">
-                                  <label>
-                                    New Password{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="npassword"
-                                    type="password"
-                                  />
-                                </div>
-                                <div className="form-group col-md-12">
-                                  <label>
-                                    Confirm Password{" "}
-                                    <span className="required">*</span>
-                                  </label>
-                                  <input
-                                    required=""
-                                    className="form-control"
-                                    name="cpassword"
-                                    type="password"
-                                  />
-                                </div>
-                                <div className="col-md-12">
-                                  <button
-                                    type="submit"
-                                    className="btn btn-fill-out submit font-weight-bold"
-                                    name="submit"
-                                    value="Submit"
-                                  >
-                                    Save Change
-                                  </button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div> */}
+                     
                       </div>
                     </div>
                   </div>

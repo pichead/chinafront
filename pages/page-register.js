@@ -1,67 +1,71 @@
 import Link from "next/link";
-import Layout from "../components/layout/Layout";
-import SurveyRegisterPopup from "./../components/elements/surveyRegisterPopup";
-import { useRouter } from "next/router";
 import { useState } from "react";
+import Layout from "../components/layout/Layout";
 
-function Login() {
-  const router = useRouter(),
-    survey = router.query;
+function Register() {
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const jsonData = {
-      firstname: data.get("firstname"),
-      lastname: data.get("lastname"),
-      sex: data.get("sex"),
-      email: data.get("email"),
       phone: data.get("phone"),
       password: data.get("password"),
-      confirmPassword: data.get("confirmPassword"),
-      Transid: "",
-      survey: survey.surveys,
     };
-    console.log(jsonData);
-    const phoneNumber = {
-      phoneno: data.get("phone"),
-    };
-
-    if (jsonData.password === jsonData.confirmPassword) {
-      fetch("http://localhost:3001/testSendOtp", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(phoneNumber),
+    fetch("http://localhost:3001/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(jsonData),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        if (data.status === "200") {
+          alert("Login Success");
+          localStorage.setItem("user", data.phone);
+          localStorage.setItem("id", data.id);
+          localStorage.setItem("token", data.token);
+          window.location = "/page-account";
+        } else {
+          alert("User/Password Incorrect");
+          console.log(jsonData);
+        }
       })
-        .then((response) => response.json())
-        .then((data) => {
-          if (data.RespCode === 200) {
-            console.log("register success");
-            jsonData.Transid = data.Result.Transid;
-
-            // console.log(jsonData);
-            router.push({
-              pathname: "/page-otp/",
-              query: jsonData,
-            });
-          } else {
-            console.log("register fail");
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error);
-        });
-    } else {
-      alert("Passwords do not match !");
-    }
+      .catch((error) => {
+        console.error("Error:", error);
+      });
   };
 
   const [phoneNo,setphoneNo] = useState("")
-  const [validLogin,setvalidLogin] = useState(true)
+  const [ValidSignup,setValidSignup] = useState(true)
+  const [validPhone,setvalidPhone] = useState(true)
+  const [InputOTP,setInputOTP] = useState("")
+  const [InputOTPDisabled,setInputOTPDisabled] = useState(true)
+
+  const OTPSent = () => {
+    console.log("func 1")
+
+  }
+
+
+  const OTPChange = (e) => {
+    const OTPInputChange = e.target.value
+    if(!(/\D/.test(OTPInputChange))){
+      if(OTPInputChange.length < 7){
+        setInputOTP(OTPInputChange)
+        if(OTPInputChange.length == 6){
+          setValidSignup(false)
+        }
+        else{
+          setValidSignup(true)
+        }
+      }
+    }
+
+  }
 
   const phoneCheck = (e) =>{
     const phoneInput = e.target.value
+    setInputOTP("")
     if(!(/\D/.test(phoneInput))){
       if(phoneInput[0] != 0){
         setphoneNo("")
@@ -69,16 +73,25 @@ function Login() {
       else{
         if(phoneInput.length < 11){
           setphoneNo(phoneInput)
+          if(phoneInput.length == 10){
+            setvalidPhone(false)
+            setInputOTPDisabled(false)
+
+          }
+          else{
+            setvalidPhone(true)
+            setInputOTPDisabled(true)
+          }
         }
       }
     }
 
   }
 
+
   return (
     <>
       <Layout parent="Home" sub="Pages" subChild="Login & Register">
-        <SurveyRegisterPopup />
         <div className="page-content pt-150 pb-150">
           <div className="container">
             <div className="row">
@@ -87,7 +100,7 @@ function Login() {
                   <div className="col-lg-6 pr-30 d-none d-lg-block">
                     <img
                       className="border-radius-15"
-                      src="assets/imgs/page/register-1.png"
+                      src="assets/imgs/page/login-4.png"
                       alt=""
                     />
                   </div>
@@ -97,96 +110,56 @@ function Login() {
                         <div className="heading_s1">
                           <h1 className="mb-5">สมัครบัญชีผู้ใช้</h1>
                           <p className="mb-30">
-                            มีบัญชีอยู่แล้ว{" "}
-                            <Link href="/page-login ">
+                          มีบัญชีอยู่แล้ว{" "}
+                            <Link href="/page-login">
                               <a>คลิกที่นี่</a>
                             </Link>
                           </p>
                         </div>
-
                         <form method="post" onSubmit={handleSubmit}>
+                          <div className="form-group">
+                            <input
+                              className=""
+                              type="tel"
+                              value={phoneNo}
+                              name="phone"
+                              maxLength="10"
+                              minLength="10"
+                              placeholder="เบอร์โทรศัพท์ *"
+                              onChange={phoneCheck}
+                              required
+                            />
+                          </div>
                           <div className="row">
-                            <div className="form-group col-4">
-                              <label>
-                                ชื่อจริง <span className="required">*</span>
-                              </label>
-                              <input type="text" placeholder="ระบุชื่อจริง" required name="firstname" />
-                            </div>
-                            <div className="form-group col-4">
-                              <label>
-                                นามสกุล <span className="required">*</span>
-                              </label>
-                              <input type="text" placeholder="ระบุนามสกุล" required name="lastname" />
-                            </div>
-                            {/* <div className="form-group">
+                            <div className="form-group col-8">
                               <input
-                                type="text"
-                                required=""
-                                name="sex"
-                                placeholder="เพศ *"
-                              />
-                            </div> */}
-
-                            <div className="form-group col-4">
-                              <label>
-                                เพศ <span className="required">*</span>
-                              </label>
-                              <select
-                                name="sex"
-                                className="form-control select-active text-secondary"
+                                type="number"
+                                value={InputOTP}
+                                name="OTP"
+                                maxLength="6"
+                                minLength="6"
+                                placeholder="ระบุ OTP *"
                                 required
-                              >
-                                <option value="" selected disabled>เลือกเพศ</option>
-                                <option value="ชาย">ชาย</option>
-                                <option value="หญิง">หญิง</option>
-                              </select>
+                                onChange={OTPChange}
+                                disabled={InputOTPDisabled}
+                              />
                             </div>
+                            <div className="form-group col-4">
+                              <button disabled={validPhone} className="btn col-12" style={{height:"64px"}} type="button" onClick={OTPSent}>Sent OTP</button>
+                            </div>
+                          </div>
 
-                            <div className="form-group col-6">
-                              <label>
-                                อีเมล <span className="required">*</span>
-                              </label>
-                              <input required type="email" placeholder="email@mymail.com" name="email" />
-                            </div>
-                            <div className="form-group col-6">
-                              <label>
-                                เบอร์โทรศัพท์{" "}
-                                <span className="required">*</span>
-                              </label>
-                              <input placeholder="0987654321" required type="tel" onChange={phoneCheck} value={phoneNo} name="phone" />
-                            </div>
-                            {/* <div className="login_footer form-group mb-50">
-                            <div className="chek-form">
-                              <div className="custome-checkbox">
-                                <input
-                                  className="form-check-input"
-                                  type="checkbox"
-                                  name="checkbox"
-                                  id="exampleCheckbox1"
-                                  value=""
-                                />
-                                <label
-                                  className="form-check-label"
-                                  htmlFor="exampleCheckbox1"
-                                >
-                                  <span>Remember me</span>
-                                </label>
-                              </div>
-                            </div>
-                            <a className="text-muted" href="#">
-                              Forgot password?
-                            </a>
-                          </div> */}
+                          
 
-                            <div className="form-group">
-                              <button
-                                type="submit"
-                                className="btn btn-heading btn-block hover-up"
-                                name="login"
-                              >
-                                Continue
-                              </button>
-                            </div>
+                          <div className="form-group">
+                            <button
+                              type="submit"
+                              className="btn btn-heading btn-block hover-up"
+                              name="login"
+                              disabled={ValidSignup}
+                            >
+                              Sign up
+                            </button>
                           </div>
                         </form>
                       </div>
@@ -202,4 +175,4 @@ function Login() {
   );
 }
 
-export default Login;
+export default Register;
