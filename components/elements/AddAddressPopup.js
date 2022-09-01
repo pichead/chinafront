@@ -11,13 +11,15 @@ const AddAddresspopup = (props) => {
   const [firstname, setFirstname] = useState();
   const [lastname, setLastname] = useState();
   const [houseNumber, setHouseNumber] = useState();
-  const [postcode, setPostcode] = useState();
+  const [postcode, setPostcode] = useState("");
   const [SLprovince, setSLprovince] = useState("");
   const [SLdistricts, setSLdistrict] = useState("");
   const [SLsubdistrict, setSLsubdistrict] = useState("");
 
   //SUBMIT
   const handleSubmit = () => {
+   
+    console.log("submit Click!")
     const jsonData = {
       firstname: firstname,
       lastname: lastname,
@@ -49,49 +51,72 @@ const AddAddresspopup = (props) => {
       });
   };
 
+
+  const PostCodeCheck = (e)=>{
+    
+    const PostCodeInput = e.target.value
+    if (!(/\D/.test(PostCodeInput))) {
+      if (PostCodeInput.length < 6) {
+        setPostcode(PostCodeInput)
+      }
+    }
+
+
+  }
+
   const selectProvince = () => {
-    fetch("http://localhost:3001/province", {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    
+    fetch("https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces", {
+      method: 'GET',
+      redirect: 'follow'
     })
-      .then((response) => response.json())
-      .then((provinces) => {
-        if (provinces) {
-          setProvince(provinces.data);
-        } else {
-          console.log("False Provinces");
-        }
+      .then(response => 
+        response.text() 
+       )
+      .then(result => {
+        const provinceFetch = JSON.parse(result)
+        setProvince(provinceFetch.data)
+
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      .catch(error => console.log('error', error));
+
   };
+
+  const SelectDistrictReset = () => {
+    const DistrictSelect = document.querySelector('#District');
+    DistrictSelect.value = ""
+  }
+
+  const SelectSubDistrictReset = () => {
+    const SubDistrictSelect = document.querySelector('#SubDistrict');
+    SubDistrictSelect.value = ""
+  }
 
   //functions select province
   const onChangeProvince = (name) => {
     setSLprovince(name);
-    fetch(`http://localhost:3001/district/${name}`, {
-      method: "GET",
-      headers: {
-        "Content-Type": "application/json",
-      },
+    setDistrict([])
+    setSubdistrict([])
+    setSLdistrict("")
+    setSLsubdistrict("")
+    SelectDistrictReset()
+    SelectSubDistrictReset()
+
+    fetch(`https://thaiaddressapi-thaikub.herokuapp.com/v1/thailand/provinces/${name}`, {
+      method: 'GET',
+      redirect: 'follow'
     })
-      .then((response) => response.json())
-      .then((district) => {
-        if (district) {
-          setDistrict(district.data);
-        } else {
-          console.log("No data district");
-        }
+      .then(response => response.text())
+      .then(result => {
+        const districtsFetch = JSON.parse(result)
+        setDistrict(districtsFetch.data)
+        
       })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+      .catch(error => console.log('error', error));
   };
 
   const onChangeDistrict = (id) => {
+    SelectSubDistrictReset()
     setSLdistrict(districts[id].district);
     setSubdistrict(districts[id].subdistrict);
   };
@@ -134,10 +159,10 @@ const AddAddresspopup = (props) => {
                   <div className="row mt-4">
                     <div className="form-group col-md-6">
                       <label>
-                        ชื่อจริง <span className="required">*</span>
+                        ชื่อจริงผู้รับ <span className="required">*</span>
                       </label>
                       <input
-                        required=""
+                        required
                         className="form-control"
                         name="firstname"
                         type="text"
@@ -146,10 +171,10 @@ const AddAddresspopup = (props) => {
                     </div>
                     <div className="form-group col-md-6">
                       <label>
-                        นามสกุล <span className="required">*</span>
+                        นามสกุลผู้รับ <span className="required">*</span>
                       </label>
                       <input
-                        required=""
+                        required
                         className="form-control"
                         name="lastname"
                         type="text"
@@ -161,7 +186,7 @@ const AddAddresspopup = (props) => {
                         ที่อยู่จัดส่ง <span className="required">*</span>
                       </label>
                       <input
-                        required=""
+                        required
                         className="form-control"
                         name="name"
                         type="text"
@@ -174,11 +199,13 @@ const AddAddresspopup = (props) => {
                       </label>
                       <select
                         className="form-control select-active text-secondary"
+                        style={{height:"64px"}}
                         onChange={(e) => {
                           onChangeProvince(e.target.value);
                         }}
+                        required
                       >
-                        <option value="">เลือกจังหวัด . . .</option>
+                        <option value="" selected disabled hidden>เลือกจังหวัด . . .</option>
                         {province.map((provinceAll, key) => (
                           <option key={key} value={provinceAll.province}>
                             {provinceAll.province}
@@ -191,10 +218,13 @@ const AddAddresspopup = (props) => {
                         อำเภอ <span className="required">*</span>
                       </label>
                       <select
+                        id="District"
+                        style={{height:"64px"}}
                         className="form-control select-active text-secondary"
                         onChange={(e) => onChangeDistrict(e.target.value)}
+                        required
                       >
-                        <option value="">เลือกอำเภอ . . .</option>
+                        <option value="" selected disabled>เลือกอำเภอ . . .</option>
                         {districts.map((districtsAll, key) => (
                           <option key={key} value={key}>
                             {districtsAll.district}
@@ -207,10 +237,13 @@ const AddAddresspopup = (props) => {
                         ตำบล <span className="required">*</span>
                       </label>
                       <select
+                        id="SubDistrict"
                         className="form-control select-active text-secondary"
                         onChange={(e) => onChangeSubdistrict(e.target.value)}
+                        style={{height:"64px"}}
+                        required
                       >
-                        <option value="">เลือกตำบล . . .</option>
+                        <option value="" selected disabled>เลือกตำบล . . .</option>
                         {subdistrict.map((subdistrictAll, key) => (
                           <option key={key} value={subdistrictAll}>
                             {subdistrictAll}
@@ -223,11 +256,14 @@ const AddAddresspopup = (props) => {
                         รหัสไปรษณีย์ <span className="required">*</span>
                       </label>
                       <input
-                        required=""
+                        required
                         className="form-control form-control-sm"
                         name="postcode"
                         type="text"
-                        onChange={(e) => setPostcode(e.target.value)}
+                        minLength={5}
+                        maxLength={5}
+                        onChange={PostCodeCheck}
+                        value={postcode}
                       />
                     </div>
                   </div>
@@ -236,7 +272,7 @@ const AddAddresspopup = (props) => {
                       type="submit"
                       className="btn hover-up"
                       onClick={() => {
-                        props.handleClose();
+                       
                         handleSubmit();
                         props.data();
                       }}

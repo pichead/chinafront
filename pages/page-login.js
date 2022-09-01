@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { useState } from "react";
 import Layout from "../components/layout/Layout";
 
 function Login() {
@@ -33,6 +34,59 @@ function Login() {
         console.error("Error:", error);
       });
   };
+
+  const [phoneNo, setphoneNo] = useState("")
+  const [validLogin, setvalidLogin] = useState(true)
+  const [OTPDisabled, setOTPDisabled] = useState(true)
+  const [OTPSentBtn, setOTPSentBtn] = useState(true)
+  const [OTPVal, setOTPVal] = useState("")
+
+
+
+  const OTPSent = () => {
+    console.log("OTP Sent btn Click!")
+  }
+
+  const OTPChange = (e) => {
+    const OTPInputChange = e.target.value
+    if (!(/\D/.test(OTPInputChange))) {
+      if (OTPInputChange.length < 7) {
+        setOTPVal(OTPInputChange)
+        if (OTPInputChange.length == 6) {
+          setvalidLogin(false)
+        }
+        else {
+          setvalidLogin(true)
+        }
+      }
+    }
+
+  }
+
+  const phoneCheck = (e) => {
+    const phoneInput = e.target.value
+    if (!(/\D/.test(phoneInput))) {
+      if (phoneInput[0] != 0) {
+        setphoneNo("")
+      }
+      else {
+        if (phoneInput.length < 11) {
+          setphoneNo(phoneInput)
+          if (phoneInput.length == 10) {
+            setOTPSentBtn(false)
+            setOTPDisabled(false)
+          }
+          else {
+            setOTPSentBtn(true)
+            setOTPDisabled(true)
+          }
+        }
+      }
+    }
+
+  }
+
+
   return (
     <>
       <Layout parent="Home" sub="Pages" subChild="Login & Register">
@@ -63,49 +117,48 @@ function Login() {
                         <form method="post" onSubmit={handleSubmit}>
                           <div className="form-group">
                             <input
-                              type="text"
-                              required=""
+                              type="tel"
+                              value={phoneNo}
                               name="phone"
+                              maxLength="10"
+                              minLength="10"
                               placeholder="เบอร์โทรศัพท์ *"
+                              onChange={phoneCheck}
+                              required
                             />
                           </div>
-                          <div className="form-group">
-                            <input
-                              required=""
-                              type="password"
-                              name="password"
-                              placeholder="รหัสผ่าน *"
-                            />
-                          </div>
-                          <div className="login_footer form-group mb-50">
-                            <div className="chek-form">
-                              <div className="custome-checkbox">
-                                <input
-                                  className="form-check-input"
-                                  type="checkbox"
-                                  name="checkbox"
-                                  id="exampleCheckbox1"
-                                  value=""
-                                />
-                                <label
-                                  className="form-check-label"
-                                  htmlFor="exampleCheckbox1"
-                                >
-                                  <span>จำบัญชีและรหัสผ่านของฉันไว้</span>
-                                </label>
-                              </div>
+                          <div className="row">
+                            <div className="col-8 form-group">
+                              <input
+                                type="number"
+                                minLength="6"
+                                maxLength="6"
+                                required
+                                placeholder="ระบุ OTP *"
+                                disabled={OTPDisabled}
+                                value={OTPVal}
+                                onChange={OTPChange}
+                              />
                             </div>
-                            <Link href="/page-forgot-password">
-                              <a className="text-muted" href="#">
-                                ลืมรหัสผ่าน
-                              </a>
-                            </Link>
+                            <div className="col-4">
+                              <button 
+                              disabled={OTPSentBtn}
+                              className="btn col-12" 
+                              type="button" 
+                              onClick={OTPSent} 
+                              style={{ height: "64px" }}>
+                              OTP
+                              </button>
+
+                            </div>
+
                           </div>
                           <div className="form-group">
                             <button
                               type="submit"
                               className="btn btn-heading btn-block hover-up"
                               name="login"
+                              disabled={validLogin}
                             >
                               Log in
                             </button>
